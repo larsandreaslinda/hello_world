@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="hello_world_barcode">6c68a9a8973431104b1a3e2e6253af47</child>
+        <cloned>2023-08-18 11:56:38</cloned>
+        <last_validated>2023-08-18 11:56:38</last_validated>
+        <parent display_value="Barcode">12b8f3d3d7033100a9ad1e173e24d406</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;other&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($scope, spUtil, cabrillo, $timeout) {
+  $scope.got = false;
+  $scope.need = false;
+
+  $scope.$on("need_barcode", function() {
+    $scope.need = true;
+  });
+
+  $scope.$on('scan_barcode', function(evt) {
+    $timeout(function() {
+      angular.element('#scan_barcode').trigger('click');
+    }, 100);
+  });
+
+  $scope.getBarcode = function() {
+    cabrillo.camera.getBarcode().then(function(value) {
+      cabrillo.log('Received barcode value: ' + value);
+      $scope.data.barcode = value;
+      $scope.got = true;
+      $scope.need = false;
+      spUtil.update($scope);
+    }, function(err) {
+      $scope.data.barcode = "IT1011717";
+      spUtil.update($scope);
+      $scope.got = true;
+      $scope.need = false;
+    });
+  }
+}]]&gt;&lt;/client_script&gt;&lt;controller_as/&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;Barcode&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[// populate the 'data' variable
+var gr = $sp.getRecord();
+if (gr == null)
+	return;
+
+data.table = gr.getTableName();
+data.sys_id = gr.getUniqueValue();
+
+if (input &amp;&amp; input.barcode &amp;&amp; gr.comments.canWrite()) {
+  gr.comments = "scanned: " + input.barcode;
+  gr.update();
+}]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2015-04-01 20:55:46&lt;/sys_created_on&gt;&lt;sys_id&gt;12b8f3d3d7033100a9ad1e173e24d406&lt;/sys_id&gt;&lt;sys_mod_count&gt;61&lt;/sys_mod_count&gt;&lt;sys_name&gt;Barcode&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Core" source="com.glide.service-portal"&gt;ca13e432d4e3211095d7c105f1bf43f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_12b8f3d3d7033100a9ad1e173e24d406&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2017-08-24 18:56:16&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+  &lt;div ng-show="false" style="padding-bottom: 16px"&gt;&lt;button id="scan_barcode" class="btn btn-primary" style="border-color:#278efc" ng-click="getBarcode()"&gt;${Scan Barcode}&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-18 11:56:38</sys_created_on>
+        <sys_id>2468ada8973431104b1a3e2e6253afb7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>6c68a9a8973431104b1a3e2e6253af47</sys_name>
+        <sys_package display_value="Hello World " source="x_1109822_hello_2">77852524973431104b1a3e2e6253af72</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Hello World ">77852524973431104b1a3e2e6253af72</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_2468ada8973431104b1a3e2e6253afb7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-18 11:56:38</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

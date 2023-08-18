@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="9af5e928973431104b1a3e2e6253af05" label="Hello World" max_length="40" name="x_1109822_hello_2_hello_world" type="collection">
+        <element label="Hello World" max_length="40" name="hello_world" type="boolean"/>
+    </element>
+</database>
